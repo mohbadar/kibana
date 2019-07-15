@@ -14,6 +14,8 @@ import {
   EuiToolTip,
   EuiButtonIcon,
   EuiLink,
+  EuiFlexGroup,
+  EuiFlexItem,
 } from '@elastic/eui';
 import { Template } from '../../../../../common/types';
 import { BASE_PATH, UIM_TEMPLATE_SHOW_DETAILS_CLICK } from '../../../../../common/constants';
@@ -210,17 +212,34 @@ export const TemplatesTable: React.FunctionComponent<Props> = ({ templates, relo
       </EuiButton>
     ),
     toolsRight: (
-      <EuiButton
-        color="secondary"
-        iconType="refresh"
-        onClick={reload}
-        data-test-subj="reloadButton"
-      >
-        <FormattedMessage
-          id="xpack.idxMgmt.templatesList.table.reloadTemplatesButtonLabel"
-          defaultMessage="Reload"
-        />
-      </EuiButton>
+      <EuiFlexGroup gutterSize="m" justifyContent="spaceAround">
+        <EuiFlexItem>
+          <EuiButton
+            color="secondary"
+            iconType="refresh"
+            onClick={reload}
+            data-test-subj="reloadButton"
+          >
+            <FormattedMessage
+              id="xpack.idxMgmt.templatesList.table.reloadTemplatesButtonLabel"
+              defaultMessage="Reload"
+            />
+          </EuiButton>
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <EuiButton
+            href={`#${BASE_PATH}templates_create`}
+            fill
+            iconType="plusInCircle"
+            data-test-subj="createTemplateButton"
+          >
+            <FormattedMessage
+              id="xpack.idxMgmt.templatesList.table.createTemplatesButtonLabel"
+              defaultMessage="Create a template"
+            />
+          </EuiButton>
+        </EuiFlexItem>
+      </EuiFlexGroup>
     ),
   };
 
